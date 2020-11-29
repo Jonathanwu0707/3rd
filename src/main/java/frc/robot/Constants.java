@@ -19,13 +19,15 @@ public final class Constants {
     
     public static class PowCon{
         
-        public static final double flywheel_kD = 0.506;
+        public static double flywheel_kF = 0.506; 
         public static final double flywheel_kP = 0.1;
 
         public static final double flywheelvel = 12000;
-        public static final int kTimeoutMs = 0;
-		public static double flywheel_kF;  
+        
+         
     }
+
+	public static final int kTimeoutMs = 30;
 
 
 	 
