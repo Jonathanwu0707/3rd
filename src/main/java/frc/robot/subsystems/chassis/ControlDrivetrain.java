@@ -5,15 +5,25 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems.shooter;
+package frc.robot.subsystems.chassis;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.ctre.phoenix.motorcontrol.*;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import frc.robot.Constants;
+import frc.robot.motor.MotorFactory;
+import frc.robot.subsystems.shooter.Spinable;
 
-public class Rack extends Spinable {
+public class ControlDrivetrain extends Spinable {
   /**
-   * Creates a new Rack.
+   * Creates a new ControlDrivetrain.
    */
-  public Rack() {
+  protected static WPI_TalonFX leftMas  = new WPI_TalonFX(Constants.chassis.leftMaster);
+  protected static WPI_TalonFX leftFol  = new WPI_TalonFX(Constants.chassis.leftFollewer);
+  protected static WPI_TalonFX rightMas = new WPI_TalonFX(Constants.chassis.rightMaster);
+  protected static WPI_TalonFX rightFol = new WPI_TalonFX(Constants.chassis.rightFollower);
+  
+  public ControlDrivetrain() {
 
   }
 

@@ -19,11 +19,18 @@ public final class Constants {
     
     public static class PowCon{
         
-        public static double flywheel_kF = 0.506; 
+        public static final double flywheel_kF = 0.506; 
         public static final double flywheel_kP = 0.1;
 
         public static final double flywheelvel = 12000;
-        
+    }
+
+    public static class chassis{
+
+		public static final int leftMaster = 19;
+		public static final int leftFollewer = 18;
+        public static final int rightMaster = 21;
+        public static final int rightFollower = 20;
          
     }
 

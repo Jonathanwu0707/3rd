@@ -7,18 +7,53 @@
 
 package frc.robot.subsystems.shooter;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.*;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Conveyor extends SubsystemBase {
+public class Conveyor extends Spinable {
   /**
    * Creates a new Conveyor.
-   */
-  public Conveyor() {
+   */   
+  private Shooter       shooter;
+  private WPI_VictorSPX conveyor = new WPI_VictorSPX(1);
 
+  public Conveyor(Shooter shooter) {
+    conveyor.setInverted(true);
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+  }
+
+  @Override
+  public void forward() {
+    if(shooter.getflywheelVelocity()>=10000){
+      conveyor.set(ControlMode.PercentOutput , 0.8);
+      SmartDashboard.putString("Shooter Status","forward");
+    }else if(shooter.getflywheelVelocity()<10000){
+      conveyor.set(ControlMode. PercentOutput , 0 );
+      SmartDashboard.putString("Shooter Status","slowly");
+    }
+  }
+
+  @Override
+  public void stop() {
+    conveyor.set(ControlMode. PercentOutput , 0 );
+    SmartDashboard.putString("Shooter Status","stop");
+
+  }
+
+  @Override
+  public void reverse() {
+    conveyor.set(ControlMode. PercentOutput , -0.8 );
+    SmartDashboard.putString("Shooter Status","reverse");
+  }
+
+  @Override
+  public String getStatus() {
+    return null;
   }
 }
