@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.Button;
 import frc.robot.commands.Arm.*;
@@ -23,16 +24,16 @@ import frc.robot.subsystems.shooter.*;
 import frc.robot.subsystems.pneumatic.*;
 
 public class RobotContainer {
- private final Shooter               m_Shooter                 = new Shooter();
- private final Conveyor              m_Conveyor                = new Conveyor(m_Shooter);
- private final Intake                m_Intake                  = new Intake();
- private final Joystick              m_Joystick                = new Joystick(0);
- private final Joystick              m_driverStation           = new Joystick(1);
- private final ControlDrivetrain     controlDrivetrain         = new ControlDrivetrain();
- private final Wing                  m_Wing                    = new Wing();
- private final Pneumatics            m_Pneumatics              = new Pneumatics();
- private final Arm                   m_arm                     = new Arm();
-
+  private final Shooter               m_Shooter                 = new Shooter();
+  private final Conveyor              m_Conveyor                = new Conveyor(m_Shooter);
+  private final Intake                m_Intake                  = new Intake();
+  private final Joystick              m_Joystick                = new Joystick(0);
+  private final Joystick              m_driverStation           = new Joystick(1);
+  private final ControlDrivetrain     controlDrivetrain         = new ControlDrivetrain();
+  private final Wing                  m_Wing                    = new Wing();
+  private final Pneumatics            m_Pneumatics              = new Pneumatics();
+  private final Arm                   m_arm                     = new Arm();
+  private final ControlDrivetrain     m_drivetrain              = new ControlDrivetrain();
 
 
   public RobotContainer() {
@@ -67,7 +68,9 @@ public class RobotContainer {
   }
   
   private void teleop() {
-  
+    m_drivetrain.setDefaultCommand(new RunCommand(
+      ()->m_drivetrain.curvatureDrive(m_Joystick.getY(), m_Joystick.getZ(), m_Joystick.getTrigger()), 
+      m_drivetrain));
   }
 
   private void Pneumatic() {

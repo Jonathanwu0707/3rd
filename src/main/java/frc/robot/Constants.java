@@ -39,6 +39,11 @@ public final class Constants {
 		public static final int leftFollewer  = 18;
         public static final int rightMaster   = 21;
         public static final int rightFollower = 20;
+
+        public static final boolean isRightMotorInvert = false;
+        public static final boolean isLeftMotorInvert = true;
+        public static final boolean isRightPhaseInvert = false;
+        public static final boolean isLeftPhaseInvert = true;
          
     }
 
