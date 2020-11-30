@@ -49,36 +49,24 @@ public final class Constants {
     }
 
     public static class Button{
-        //Driverstation
-
-        // ____________________
-        // |                  |
-        // |    1 2  3  4     |              
-        // |                  |                      
-        // |    5 6  7  8     |
-        // |                  |
-        // ____________________
-        
-        public static final int flySpin     = 1;
-        public static final int conveyor    = 2;
-        public static final int turretleft  = 3;
-        public static final int turretright = 4;
-        public static final int rackdown    = 5;
-        public static final int rackup      = 6;
-        public static final int intake      = 7;
-        public static final int autoAim     = 8;
 
         //Joystick
         //trigger be used to curvature drive
-        public static final int armOut        = 3;
-        public static final int armIn         = 4;
-        public static final int towerZero     = 5;
-        public static final int rackZero      = 6;
-        public static final int manualShoot   = 7;
-        public static final int zeroRack      = 8;
-        public static final int intake_opp    = 9;
-        public static final int hanging_up    = 10;
-        public static final int hanging_down  = 11;
+        public static final int flySpin = 1;           //飛輪啟用
+        public static final int conveyor = 2;          //送球
+        public static final int intake = 3;            //送球保險
+        public static final int rack_up = 4;           //齒條上升
+        public static final int rack_down = 5;         //齒條下降
+        public static final int turretleft = 6;        //轉塔左
+        public static final int turretRight = 7;       //轉塔右
+        public static final int arm_out = 8;           //手臂出去
+        public static final int arm_in = 9;            //手臂進來
+        public static final int emergency_shoot = 10;   //緊急發射
+        public static final int intake_opp = 11;        //進球反轉(包括送球三個馬達+吸球)
+        public static final int towerZero = 12;         //轉塔歸零
+        public static final int rackZero = 13;          //齒條歸零
+        //public static final int autoaim = 14;           //自動瞄準
+
     }
 
 	
