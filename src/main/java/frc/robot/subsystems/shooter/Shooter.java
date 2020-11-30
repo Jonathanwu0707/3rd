@@ -24,6 +24,10 @@ public class Shooter extends Spinable {
 
   
   public Shooter() {
+    // Factory default hardware to prevent unexpected behavior 
+    flywheelLeft.configFactoryDefault();
+    flywheelRight.configFactoryDefault();
+    
     //set sensor
     MotorFactory.setSensor(flywheelLeft,FeedbackDevice.IntegratedSensor);
     MotorFactory.setSensor(flywheelRight, FeedbackDevice.IntegratedSensor);
@@ -60,9 +64,7 @@ public class Shooter extends Spinable {
     flywheelLeft.setInverted(false);
     flywheelRight.setInverted(InvertType.OpposeMaster);
     
-    // Factory default hardware to prevent unexpected behavior 
-    flywheelLeft.configFactoryDefault();
-    flywheelRight.configFactoryDefault();
+
   }
 
   @Override
