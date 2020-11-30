@@ -19,22 +19,70 @@ public final class Constants {
     
     public static class PowCon{
         
-        public static final double flywheel_kF = 0.506; 
-        public static final double flywheel_kP = 0.1;
-
-        public static final double flywheelvel = 12000;
+        public static final double flywheel_kF  = 0.506; 
+        public static final double flywheel_kP  = 0.1;
+        public static final double flywheelvel  = 12000;
+        
+        public static final int wingRight     = 3;
+        public static final int wingMiddle    = 2;
+        
+        public static final int flywheelLeft  = 17;
+	    public static final int flywheelRight = 15;
+        
+        public static final int kTimeoutMs    = 30;
     }
-
+    
+    
     public static class chassis{
 
-		public static final int leftMaster = 19;
-		public static final int leftFollewer = 18;
-        public static final int rightMaster = 21;
+		public static final int leftMaster    = 19;
+		public static final int leftFollewer  = 18;
+        public static final int rightMaster   = 21;
         public static final int rightFollower = 20;
          
     }
 
-	public static final int kTimeoutMs = 30;
+    public static class Pne{
+        public static final int ArmDS_1 = 0;           //雙電磁閥腳位1
+        public static final int ArmDS_2 = 1;           //雙電磁閥腳位2
+
+    }
+
+    public static class Button{
+        //Driverstation
+
+        // ____________________
+        // |                  |
+        // |    1 2  3  4     |              
+        // |                  |                      
+        // |    5 6  7  8     |
+        // |                  |
+        // ____________________
+        
+        public static final int flySpin     = 1;
+        public static final int conveyor    = 2;
+        public static final int turretleft  = 3;
+        public static final int turretright = 4;
+        public static final int rackdown    = 5;
+        public static final int rackup      = 6;
+        public static final int intake      = 7;
+        public static final int autoAim     = 8;
+
+        //Joystick
+        //trigger be used to curvature drive
+        public static final int armOut        = 3;
+        public static final int armIn         = 4;
+        public static final int towerZero     = 5;
+        public static final int rackZero      = 6;
+        public static final int manualShoot   = 7;
+        public static final int zeroRack      = 8;
+        public static final int intake_opp    = 9;
+        public static final int hanging_up    = 10;
+        public static final int hanging_down  = 11;
+    }
+
+	
+	
 
 
 	 

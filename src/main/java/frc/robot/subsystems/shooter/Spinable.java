@@ -23,4 +23,5 @@ public abstract class Spinable extends SubsystemBase{
   public abstract void stop();
   public abstract void reverse();
   public abstract String getStatus();
+  
 }

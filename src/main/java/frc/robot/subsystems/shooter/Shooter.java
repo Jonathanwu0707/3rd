@@ -9,7 +9,6 @@ package frc.robot.subsystems.shooter;
 
 import com.ctre.phoenix.motorcontrol.*;
 import frc.robot.motor.MotorFactory;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
@@ -19,44 +18,49 @@ import frc.robot.Constants.PowCon;
 
 public class Shooter extends Spinable {
   private SupplyCurrentLimitConfiguration supplyCurrentLimitConfiguration = new SupplyCurrentLimitConfiguration(true, 40, 50, 1);
-  private TalonFX flywheelLeft = new TalonFX(17);
-  private TalonFX flywheelRight = new TalonFX(15);
+  private TalonFX flywheelLeft = new TalonFX(PowCon.flywheelLeft);
+  private TalonFX flywheelRight = new TalonFX(PowCon.flywheelRight);
   
 
   
   public Shooter() {
+    //set sensor
     MotorFactory.setSensor(flywheelLeft,FeedbackDevice.IntegratedSensor);
     MotorFactory.setSensor(flywheelRight, FeedbackDevice.IntegratedSensor);
     
-    //adjust kP,kF
+    //adjust kP,kF 
     MotorFactory.configPF(flywheelLeft,PowCon.flywheel_kP,PowCon.flywheel_kF,0);
     MotorFactory.configPF(flywheelRight, PowCon.flywheel_kP, PowCon.flywheel_kF, 0);
     
-    flywheelLeft.configMotionCruiseVelocity(15000, Constants.kTimeoutMs);
-		flywheelLeft.configMotionAcceleration(6000, Constants.kTimeoutMs);
-		flywheelLeft.setSelectedSensorPosition(0, 0, Constants.kTimeoutMs);
-    
-    flywheelRight.configMotionCruiseVelocity(15000, Constants.kTimeoutMs);
-		flywheelRight.configMotionAcceleration(6000, Constants.kTimeoutMs);
-		flywheelRight.setSelectedSensorPosition(0, 0, Constants.kTimeoutMs);
-
-
+    //adjust CruiseVel, Accler,SensorPos
+    flywheelLeft.configMotionCruiseVelocity(15000, PowCon.kTimeoutMs);
+		flywheelLeft.configMotionAcceleration(6000, PowCon.kTimeoutMs);
+		flywheelLeft.setSelectedSensorPosition(0, 0, PowCon.kTimeoutMs);
+    flywheelRight.configMotionCruiseVelocity(15000, PowCon.kTimeoutMs);
+		flywheelRight.configMotionAcceleration(6000, PowCon.kTimeoutMs);
+		flywheelRight.setSelectedSensorPosition(0, 0, PowCon.kTimeoutMs);
 
     //PeakOutput , CurrentLimit , NeutralDeadband 
-    flywheelLeft.configPeakOutputForward(0.7, Constants.kTimeoutMs);
-    flywheelRight.configPeakOutputForward(0.7, Constants.kTimeoutMs);
+    flywheelLeft.configPeakOutputForward(0.7, PowCon.kTimeoutMs);
+    flywheelRight.configPeakOutputForward(0.7, PowCon.kTimeoutMs);
     flywheelLeft.configSupplyCurrentLimit(supplyCurrentLimitConfiguration);
     flywheelRight.configSupplyCurrentLimit(supplyCurrentLimitConfiguration);
-    flywheelLeft.configNeutralDeadband(0.005, Constants.kTimeoutMs);
-    flywheelLeft.configNeutralDeadband(0.005, Constants.kTimeoutMs);
+    
+    flywheelLeft.setNeutralMode(NeutralMode.Coast);
+    flywheelRight.setNeutralMode(NeutralMode.Coast);
+    flywheelLeft.configNeutralDeadband(0.005, PowCon.kTimeoutMs);
+    flywheelRight.configNeutralDeadband(0.005, PowCon.kTimeoutMs);
+    
+    //Closedloop,Openedloop
     flywheelLeft.configClosedloopRamp(0.5, 10);
     flywheelRight.configClosedloopRamp(0.5, 10);
     
+    //InvertType
     flywheelRight.follow(flywheelLeft);
     flywheelLeft.setInverted(false);
     flywheelRight.setInverted(InvertType.OpposeMaster);
     
-    /* Factory default hardware to prevent unexpected behavior */
+    // Factory default hardware to prevent unexpected behavior 
     flywheelLeft.configFactoryDefault();
     flywheelRight.configFactoryDefault();
   }
@@ -76,13 +80,14 @@ public class Shooter extends Spinable {
   public void forward() {
     double vel = Constants.PowCon.flywheelvel;
     flywheelLeft.set(ControlMode.Velocity,vel);
+    SmartDashboard.putString("flywheel status", "forward");
 
   }
 
   @Override
   public void stop() {
     flywheelLeft.set(ControlMode.Velocity,0);
-
+    SmartDashboard.putString("flywheel status", "stop");
   }
 
   @Override

@@ -9,9 +9,8 @@ package frc.robot.subsystems.shooter;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.*;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import frc.robot.Constants.PowCon;
 public class Conveyor extends Spinable {
   /**
    * Creates a new Conveyor.
@@ -20,7 +19,16 @@ public class Conveyor extends Spinable {
   private WPI_VictorSPX conveyor = new WPI_VictorSPX(1);
 
   public Conveyor(Shooter shooter) {
+    
+    conveyor.configFactoryDefault();
+    
+    conveyor.setNeutralMode(NeutralMode.Coast);
+    conveyor.configNeutralDeadband(0.005);
+   
+    conveyor.configOpenloopRamp(0.5);
+    conveyor.configPeakOutputForward(0.8, PowCon.kTimeoutMs);
     conveyor.setInverted(true);
+    
   }
 
   @Override
