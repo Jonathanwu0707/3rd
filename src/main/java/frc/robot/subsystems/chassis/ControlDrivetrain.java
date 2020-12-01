@@ -27,8 +27,8 @@ public class ControlDrivetrain extends SubsystemBase {
   protected static WPI_TalonFX rightFol = new WPI_TalonFX(chassis.rightFollower);
   protected static AHRS ahrs = new AHRS(SPI.Port.kMXP);
   private SupplyCurrentLimitConfiguration supplyCurrentLimitConfiguration = new SupplyCurrentLimitConfiguration(true, 40, 50, 1);
-  private SlewRateLimiter yFilter = new SlewRateLimiter(0.25);
-  private SlewRateLimiter zFilter = new SlewRateLimiter(0.25);
+  private SlewRateLimiter yFilter = new SlewRateLimiter(1.0);
+  private SlewRateLimiter zFilter = new SlewRateLimiter(1.0);
   private double m_quickStopAccumulator = 0, leftout = 0, rightout = 0, lastRotation = 0;
   /**
    * Creates a new ControlDrivetrain.
