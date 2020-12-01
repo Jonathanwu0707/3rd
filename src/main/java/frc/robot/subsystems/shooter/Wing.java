@@ -33,9 +33,9 @@ public class Wing extends Spinable {
     wing.configOpenloopRamp(0.5);
     wing.configPeakOutputForward(0.6, PowCon.kTimeoutMs);
     wing.setInverted(true);
-    wing.configOpenloopRamp(0.5);
-    wing.configPeakOutputForward(0.8, PowCon.kTimeoutMs);
-    wing.setInverted(true);
+    middleWing.configOpenloopRamp(0.5);
+    middleWing.configPeakOutputForward(0.8, PowCon.kTimeoutMs);
+    middleWing.setInverted(true);
 
   }
 
