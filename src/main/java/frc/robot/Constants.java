@@ -31,7 +31,6 @@ public final class Constants {
         
         public static final int flywheelLeft  = 17;
         public static final int flywheelRight = 15;
-        public static final int tower         = 52;
         
         public static final int kTimeoutMs    = 30;
     }

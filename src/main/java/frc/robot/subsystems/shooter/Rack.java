@@ -24,7 +24,7 @@ public class Rack extends Spinable {
    * Creates a new Rack.
    */
   private SupplyCurrentLimitConfiguration supplyCurrentLimitConfiguration = new SupplyCurrentLimitConfiguration(true, 8, 10, 1);
-  private WPI_TalonSRX rack = new WPI_TalonSRX(PowCon.rack)
+  private WPI_TalonSRX rack = new WPI_TalonSRX(PowCon.rack);
   private int lastPosition = 0;
 
 
