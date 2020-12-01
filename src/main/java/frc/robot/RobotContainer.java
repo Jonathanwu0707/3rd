@@ -28,12 +28,13 @@ public class RobotContainer {
   private final Conveyor              m_Conveyor                = new Conveyor(m_Shooter);
   private final Intake                m_Intake                  = new Intake();
   private final Joystick              m_Joystick                = new Joystick(0);
-  private final Joystick              m_driverStation           = new Joystick(1);
   private final ControlDrivetrain     controlDrivetrain         = new ControlDrivetrain();
   private final Wing                  m_Wing                    = new Wing();
   private final Pneumatics            m_Pneumatics              = new Pneumatics();
-  private final Arm                   m_arm                     = new Arm();
+  private final Arm                   m_Arm                     = new Arm();
   private final ControlDrivetrain     m_drivetrain              = new ControlDrivetrain();
+  private final Rack                  m_Rack                    = new Rack();
+  private final Tower                 m_Tower                   = new Tower();
 
 
   public RobotContainer() {
@@ -58,9 +59,12 @@ public class RobotContainer {
                                                               .whenHeld(new SpinReverse(m_Conveyor))
                                                               .whenHeld(new SpinReverse(m_Wing));
     // new JoystickButton(m_Joystick, Button.flySpin)            .whenHeld(new SpinForward(m_Shooter));
-    new JoystickButton(m_Joystick,Button.arm_out)             .whenHeld(new ArmOut(m_arm));
-    new JoystickButton(m_Joystick,Button.arm_in)              .whenHeld(new ArmIn(m_arm));
-
+    new JoystickButton(m_Joystick,Button.arm_out)             .whenHeld(new ArmOut(m_Arm));
+    new JoystickButton(m_Joystick,Button.arm_in)              .whenHeld(new ArmIn(m_Arm));
+    new JoystickButton(m_Joystick,Button.rack_up)             .whenHeld(new SpinForward(m_Rack));
+    new JoystickButton(m_Joystick,Button.rack_down)           .whenHeld(new SpinReverse(m_Rack));
+    new JoystickButton(m_Joystick, Button.turretleft)         .whenHeld(new SpinForward(m_Tower));
+    new JoystickButton(m_Joystick, Button.turretRight)        .whenHeld(new SpinReverse(m_Tower));
 
   }
   private void driverStationMapping() {
