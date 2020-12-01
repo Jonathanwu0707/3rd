@@ -57,7 +57,7 @@ public class RobotContainer {
     new JoystickButton(m_Joystick, Button.intake_opp)         .whenHeld(new SpinReverse(m_Intake) )
                                                               .whenHeld(new SpinReverse(m_Conveyor))
                                                               .whenHeld(new SpinReverse(m_Wing));
-    new JoystickButton(m_Joystick, Button.flySpin)            .whenHeld(new SpinForward(m_Shooter));
+    // new JoystickButton(m_Joystick, Button.flySpin)            .whenHeld(new SpinForward(m_Shooter));
     new JoystickButton(m_Joystick,Button.arm_out)             .whenHeld(new ArmOut(m_arm));
     new JoystickButton(m_Joystick,Button.arm_in)              .whenHeld(new ArmIn(m_arm));
 

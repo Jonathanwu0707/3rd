@@ -57,7 +57,7 @@ public final class Constants {
 
         //Joystick
         //trigger be used to curvature drive
-        public static final int flySpin = 1;           //飛輪啟用
+        // public static final int flySpin = 1;           //飛輪啟用
         public static final int conveyor = 2;          //送球
         public static final int intake = 3;            //送球保險
         public static final int rack_up = 4;           //齒條上升
