@@ -1,10 +1,9 @@
 /***************************************************************/
+// Factory default hardware to prevent unexpected behavior 
 //set sensor
 //adjust kP,kF 
 //adjust CruiseVel, Accler,SensorPos
 //PeakOutput , CurrentLimit , NeutralDeadband 
 //Closedloop,Openedloop
 //InvertType
-// Factory default hardware to prevent unexpected behavior 
 /***************************************************************/
-123
