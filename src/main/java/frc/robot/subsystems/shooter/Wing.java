@@ -20,6 +20,7 @@ public class Wing extends Spinable {
    */
   private final WPI_VictorSPX wing = new WPI_VictorSPX(PowCon.wingRight);
   private final WPI_VictorSPX middleWing = new WPI_VictorSPX(PowCon.wingMiddle);
+  private final WPI_VictorSPX intake = new WPI_VictorSPX(PowCon.intake);
   
   public Wing() {
     wing.configFactoryDefault();
@@ -48,6 +49,7 @@ public class Wing extends Spinable {
   public void forward() {
     wing.set(ControlMode.PercentOutput , 0.6);
     middleWing.set(ControlMode.PercentOutput , 0.8);
+    intake.set(ControlMode.PercentOutput,0.8);
     SmartDashboard.putString("Wing", "forward");
   }
 
@@ -55,6 +57,7 @@ public class Wing extends Spinable {
   public void stop() {
     wing.set(ControlMode.PercentOutput , 0);
     middleWing.set(ControlMode.PercentOutput , 0);
+    intake.set(ControlMode.PercentOutput,0);
     SmartDashboard.putString("Wing", "stop");
   }
 
@@ -62,6 +65,7 @@ public class Wing extends Spinable {
   public void reverse() {
     wing.set(ControlMode.PercentOutput , -0.6);
     middleWing.set(ControlMode.PercentOutput , -0.8);
+    intake.set(ControlMode.PercentOutput,-0.8);
     SmartDashboard.putString("Wing", "reverse");
 
   }

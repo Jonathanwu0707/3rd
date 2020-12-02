@@ -22,8 +22,6 @@ public class SpinForward extends CommandBase {
     addRequirements(motor);
   }
 
-  public SpinForward(Shooter m_Shooter) {
-}
 
 @Override
   public void initialize() {

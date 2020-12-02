@@ -24,7 +24,9 @@ public final class Constants {
         public static final double flywheelvel  = 12000;
         
         public static final int wingMiddle    = 2;
-        public static final int wingRight     = 3;
+        public static final int wingRight     = 1;
+        public static final int intake = 3;
+        public static final int conveyor = 6; 
         
         public static final int tower = 36;
         public static final int rack = 25;
@@ -57,11 +59,12 @@ public final class Constants {
     }
 
     public static class Button{
+        public static final int flySpin         = 1;           //飛輪啟用
+        public static final int conveyor        = 2;           //送球
 
         //Joystick
         //trigger be used to curvature drive
-        public static final int flySpin         = 1;           //飛輪啟用
-        public static final int conveyor        = 2;           //送球
+        
         public static final int intake          = 3;           //送球保險
         public static final int rack_up         = 4;           //齒條上升
         public static final int rack_down       = 5;           //齒條下降

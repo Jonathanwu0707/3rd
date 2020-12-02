@@ -28,6 +28,7 @@ public class RobotContainer {
   private final Conveyor              m_Conveyor                = new Conveyor(m_Shooter);
   private final Intake                m_Intake                  = new Intake();
   private final Joystick              m_Joystick                = new Joystick(0);
+  private final XboxController        m_XboxController          = new XboxController(1);
   private final ControlDrivetrain     controlDrivetrain         = new ControlDrivetrain();
   private final Wing                  m_Wing                    = new Wing();
   private final Pneumatics            m_Pneumatics              = new Pneumatics();
@@ -58,10 +59,10 @@ public class RobotContainer {
     new JoystickButton(m_Joystick, Button.intake_opp)         .whenHeld(new SpinReverse(m_Intake) )
                                                               .whenHeld(new SpinReverse(m_Conveyor))
                                                               .whenHeld(new SpinReverse(m_Wing));
-    new JoystickButton(m_Joystick, Button.conveyor)           .whenHeld(new SpinForward(m_Intake) )
-                                                              .whenHeld(new SpinForward(m_Conveyor))
+    new JoystickButton(m_Joystick, Button.intake)             .whenHeld(new SpinForward(m_Intake))
                                                               .whenHeld(new SpinForward(m_Wing));
-    // new JoystickButton(m_Joystick, Button.flySpin)            .whenHeld(new SpinForward(m_Shooter));
+    new JoystickButton(m_XboxController,Button.conveyor)      .whenHeld(new SpinForward(m_Conveyor));
+    new JoystickButton(m_XboxController, Button.flySpin)      .whenHeld(new SpinForward(m_Shooter));
     new JoystickButton(m_Joystick,Button.arm_out)             .whenHeld(new ArmOut(m_Arm));
     new JoystickButton(m_Joystick,Button.arm_in)              .whenHeld(new ArmIn(m_Arm));
     new JoystickButton(m_Joystick,Button.rack_up)             .whenHeld(new SpinForward(m_Rack));
@@ -75,7 +76,7 @@ public class RobotContainer {
   
   private void teleop() {
     m_drivetrain.setDefaultCommand(new RunCommand(
-      ()->m_drivetrain.curvatureDrive(m_Joystick.getY(), m_Joystick.getZ(), m_Joystick.getTrigger()), 
+      ()->m_drivetrain.curvatureDrive(m_Joystick.getY() * 0.5, m_Joystick.getZ() * -0.5, m_Joystick.getTrigger()), 
       m_drivetrain));
   }
 

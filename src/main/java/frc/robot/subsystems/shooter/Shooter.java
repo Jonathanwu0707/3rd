@@ -17,9 +17,9 @@ import frc.robot.Constants.PowCon;
 
 
 public class Shooter extends Spinable {
-  private SupplyCurrentLimitConfiguration supplyCurrentLimitConfiguration = new SupplyCurrentLimitConfiguration(true, 40, 50, 1);
+  private SupplyCurrentLimitConfiguration supplyCurrentLimitConfiguration = new SupplyCurrentLimitConfiguration(true, 50, 50, 1);
   private TalonFX flywheelLeft = new TalonFX(PowCon.flywheelLeft);
-  private TalonFX flywheelRight = new TalonFX(PowCon.flywheelRight);
+  private TalonFX flywheelRight = new TalonFX(PowCon.flywheelRight); 
   
 
   
@@ -69,8 +69,7 @@ public class Shooter extends Spinable {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
-    
+    SmartDashboard.putNumber("flyvel", flywheelLeft.getSelectedSensorVelocity(0));
   }
 
   public double getflywheelVelocity(){ 
