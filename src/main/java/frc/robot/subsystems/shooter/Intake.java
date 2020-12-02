@@ -1,4 +1,4 @@
-package frc.robot.subsystems;
+package frc.robot.subsystems.shooter;
 
 import frc.robot.Constants.PowCon;
 import frc.robot.subsystems.shooter.Spinable;

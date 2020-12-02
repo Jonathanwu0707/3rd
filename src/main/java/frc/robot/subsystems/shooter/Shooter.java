@@ -8,7 +8,7 @@
 package frc.robot.subsystems.shooter;
 
 import com.ctre.phoenix.motorcontrol.*;
-import frc.robot.motor.MotorFactory;
+import frc.robot.motor_method.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 

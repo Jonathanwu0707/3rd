@@ -8,7 +8,6 @@
 package frc.robot.commands.Rotateable;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.shooter.Shooter;
 import frc.robot.subsystems.shooter.Spinable;
 
 public class SpinForward extends CommandBase {
