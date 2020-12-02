@@ -33,10 +33,10 @@ public class Tower extends Spinable {
     MotorFactory.setSensor(tower, FeedbackDevice.CTRE_MagEncoder_Absolute);
     Shuffleboard.getTab("PositionCombine").addString("Tower", this::getStatus);
     Shuffleboard.getTab("PositionCombine").addNumber("TowerPosition", this::getPosition);
-    useLimit = Shuffleboard.getTab("PositionCombine")
-      .add("Tower Limit", 1)
-      .withWidget(BuiltInWidgets.kNumberSlider)
-      .getEntry();
+      // useLimit = Shuffleboard.getTab("PositionCombine")
+      // .add("Tower Limit", 1)
+      // .withWidget(BuiltInWidgets.kNumberSlider)
+      // .getEntry();
     
     tower.configSupplyCurrentLimit(supplyCurrentLimitConfiguration);
     tower.setNeutralMode(NeutralMode.Coast);
