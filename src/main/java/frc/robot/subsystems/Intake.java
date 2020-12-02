@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class Intake extends Spinable {
-    private final WPI_VictorSPX intake = new WPI_VictorSPX(5);
+    private final WPI_VictorSPX intake = new WPI_VictorSPX(PowCon.intake);
 
     public Intake(){
         
@@ -21,12 +21,11 @@ public class Intake extends Spinable {
    
         intake.configOpenloopRamp(0.5);
         intake.configPeakOutputForward(0.9, PowCon.kTimeoutMs);
-        intake.setInverted(true);
     }
 
     @Override
     public void forward() {
-        intake.set(ControlMode.PercentOutput,0.9);
+        intake.set(ControlMode.PercentOutput,-0.9);
         SmartDashboard.putString("Intake", "forward");
 
     }
@@ -34,14 +33,14 @@ public class Intake extends Spinable {
     @Override
     public void stop() {
         intake.set(ControlMode.PercentOutput,0);
-        SmartDashboard.putString("Intake", "forward");
+        SmartDashboard.putString("Intake", "stop");
 
     }
 
     @Override
     public void reverse() {
-        intake.set(ControlMode.PercentOutput,-0.9);
-        SmartDashboard.putString("Intake", "forward");
+        intake.set(ControlMode.PercentOutput,0.9);
+        SmartDashboard.putString("Intake", "reverse");
 
     }
 

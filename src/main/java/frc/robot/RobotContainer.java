@@ -56,10 +56,10 @@ public class RobotContainer {
     Pneumatic();
   }
   private void joystickMapping() {
-    new JoystickButton(m_Joystick, Button.intake_opp)         .whenHeld(new SpinReverse(m_Intake) )
+    new JoystickButton(m_Joystick, Button.intake_opp)         .whenHeld(new SpinForward(m_Intake) )
                                                               .whenHeld(new SpinReverse(m_Conveyor))
                                                               .whenHeld(new SpinReverse(m_Wing));
-    new JoystickButton(m_Joystick, Button.intake)             .whenHeld(new SpinForward(m_Intake))
+    new JoystickButton(m_Joystick, Button.intake)             .whenHeld(new SpinReverse(m_Intake))
                                                               .whenHeld(new SpinForward(m_Wing));
     new JoystickButton(m_XboxController,Button.conveyor)      .whenHeld(new SpinForward(m_Conveyor));
     new JoystickButton(m_XboxController, Button.flySpin)      .whenHeld(new SpinForward(m_Shooter));
