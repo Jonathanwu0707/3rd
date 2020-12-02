@@ -68,7 +68,6 @@ public class RobotContainer {
     new JoystickButton(m_Joystick,Button.rack_down)           .whenHeld(new SpinReverse(m_Rack));
     new JoystickButton(m_Joystick, Button.turretleft)         .whenHeld(new SpinForward(m_Tower));
     new JoystickButton(m_Joystick, Button.turretRight)        .whenHeld(new SpinReverse(m_Tower));
-
   }
   private void driverStationMapping() {
   
