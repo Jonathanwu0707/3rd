@@ -74,7 +74,7 @@ public class RobotContainer {
   }
 
   private void Pneumatic() {
-  
+    m_Pneumatics.Phnematics_staute();
   }
 
   
