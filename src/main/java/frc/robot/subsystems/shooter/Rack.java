@@ -40,7 +40,7 @@ public class Rack extends Spinable {
     rack.configMotionCruiseVelocity(1500, 10);
 
     rack.configPeakOutputForward(0.2, PowCon.kTimeoutMs);
-    rack.configPeakOutputReverse(0.2, PowCon.kTimeoutMs);
+    rack.configPeakOutputReverse(-0.2, PowCon.kTimeoutMs);
     rack.configSupplyCurrentLimit(supplyCurrentLimitConfiguration);
     
     rack.setNeutralMode(NeutralMode.Coast);

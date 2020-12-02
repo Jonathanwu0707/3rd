@@ -24,14 +24,14 @@ public class Tower extends Spinable {
   private TalonSRX tower = new TalonSRX(PowCon.tower);
   private DigitalInput dot = new DigitalInput(1);
   private static final int forwardL = 5000, reverseL = -5000;
-  private NetworkTableEntry useLimit;
-  private String status = "Stop";
+  // private NetworkTableEntry useLimit;
+  // private String status = "Stop";
 
   
   public Tower() {
     tower.configFactoryDefault();
     MotorFactory.setSensor(tower, FeedbackDevice.CTRE_MagEncoder_Absolute);
-    Shuffleboard.getTab("PositionCombine").addString("Tower", this::getStatus);
+    // Shuffleboard.getTab("PositionCombine").addString("Tower", this::getStatus);
     Shuffleboard.getTab("PositionCombine").addNumber("TowerPosition", this::getPosition);
       // useLimit = Shuffleboard.getTab("PositionCombine")
       // .add("Tower Limit", 1)
