@@ -9,7 +9,12 @@ package frc.robot.commands.Rotateable;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.shooter.Spinable;
+import frc.robot.subsystems.shooter.Shooter;
 
+/*
+ * 要使用這個命令需要傳遞一個Spinable的子類別，並覆寫Spinable的三個抽象方法，
+ * 在這個命令中，馬達將會呼叫該子類別的reverse()方法，結束時呼叫stop()方法
+ */
 public class SpinReverse extends CommandBase {
   private Spinable motor;
 
@@ -18,6 +23,9 @@ public class SpinReverse extends CommandBase {
     addRequirements(motor);
   }
 
+  public SpinReverse(Shooter m_Shooter) {
+  }
+  
   @Override
   public void initialize() {
   }
@@ -32,9 +40,9 @@ public class SpinReverse extends CommandBase {
     motor.stop();
   }
 
+  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return false;
   }
 }
-

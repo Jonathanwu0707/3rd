@@ -31,7 +31,7 @@ public class Tower extends Spinable {
   public Tower() {
     tower.configFactoryDefault();
     MotorFactory.setSensor(tower, FeedbackDevice.CTRE_MagEncoder_Absolute);
-    Shuffleboard.getTab("PositionCombine").addString("Tower", this::getStatus);
+    // Shuffleboard.getTab("PositionCombine").addString("Tower", this::getStatus);
     Shuffleboard.getTab("PositionCombine").addNumber("TowerPosition", this::getPosition);
       // useLimit = Shuffleboard.getTab("PositionCombine")
       // .add("Tower Limit", 1)

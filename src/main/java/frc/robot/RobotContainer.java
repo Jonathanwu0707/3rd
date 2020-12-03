@@ -42,6 +42,10 @@ public class RobotContainer {
     configureButtonBindings();
   }
 
+  public void rackInit(){
+    m_Rack.initial();
+  }
+
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link
@@ -55,9 +59,9 @@ public class RobotContainer {
     Pneumatic();
   }
   private void joystickMapping() {
-    new JoystickButton(m_Joystick, Button.intake_opp)         .whenHeld(new SpinReverse(m_Intake) )
-                                                              .whenHeld(new SpinReverse(m_Conveyor))
-                                                              .whenHeld(new SpinReverse(m_Wing));
+    new JoystickButton(m_Joystick, Button.intake_opp)         .whenHeld(new SpinForward(m_Intake) )
+                                                              .whenHeld(new SpinForward(m_Conveyor))
+                                                              .whenHeld(new SpinForward(m_Wing));
     // new JoystickButton(m_Joystick, Button.flySpin)            .whenHeld(new SpinForward(m_Shooter));
     new JoystickButton(m_Joystick,Button.arm_out)             .whenHeld(new ArmOut(m_Arm));
     new JoystickButton(m_Joystick,Button.arm_in)              .whenHeld(new ArmIn(m_Arm));
@@ -78,6 +82,7 @@ public class RobotContainer {
   }
 
   private void Pneumatic() {
+    m_Pneumatics.Phnematics_staute();
   
   }
 
