@@ -16,7 +16,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.PowCon;
-import frc.robot.motor.MotorFactory;
+import frc.robot.motor_method.*;
 import com.ctre.phoenix.motorcontrol.*;
 
 public class Rack extends Spinable {

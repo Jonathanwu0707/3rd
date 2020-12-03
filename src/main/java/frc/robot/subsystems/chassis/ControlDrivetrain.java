@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.SlewRateLimiter;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpiutil.math.MathUtil;
 import frc.robot.Constants.*;
-import frc.robot.motor.MotorFactory;
+import frc.robot.motor_method.*;
 import com.kauailabs.navx.frc.AHRS;
 
 public class ControlDrivetrain extends SubsystemBase {

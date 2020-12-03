@@ -12,18 +12,18 @@ import frc.robot.motor_method.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
-import frc.robot.Constants;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.PowCon;
 
 
-public class Shooter extends Spinable {
+public class Emergency_Shooter extends SubsystemBase {
   private SupplyCurrentLimitConfiguration supplyCurrentLimitConfiguration = new SupplyCurrentLimitConfiguration(true, 50, 50, 1);
   private TalonFX flywheelLeft = new TalonFX(PowCon.flywheelLeft);
   private TalonFX flywheelRight = new TalonFX(PowCon.flywheelRight); 
   
 
   
-  public Shooter() {
+  public Emergency_Shooter() {
     // Factory default hardware to prevent unexpected behavior 
     flywheelLeft.configFactoryDefault();
     flywheelRight.configFactoryDefault();
@@ -66,6 +66,11 @@ public class Shooter extends Spinable {
 
   }
 
+  public void emergency(){
+    flywheelLeft.set(ControlMode.PercentOutput,0.9);
+    SmartDashboard.putString("flywheel status", "emergency");
+  }
+
   @Override
   public void periodic() {
     SmartDashboard.putNumber("flyvel", flywheelLeft.getSelectedSensorVelocity(0));
@@ -76,26 +81,5 @@ public class Shooter extends Spinable {
     return flywheelLeft.getSelectedSensorVelocity();
   }
 
-  @Override
-  public void forward() {
-    double vel = Constants.PowCon.flywheelvel;
-    flywheelLeft.set(ControlMode.Velocity,vel);
-    SmartDashboard.putString("flywheel status", "forward");
-
-  }
-
-  @Override
-  public void stop() {
-    flywheelLeft.set(ControlMode.Velocity,0);
-    SmartDashboard.putString("flywheel status", "stop");
-  }
-
-  @Override
-  public void reverse() {
-  }
-
-  @Override
-  public String getStatus() {
-    return null;
-  }
+  
 }
