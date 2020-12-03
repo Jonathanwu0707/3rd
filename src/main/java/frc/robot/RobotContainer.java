@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.Button;
@@ -69,6 +70,9 @@ public class RobotContainer {
     new JoystickButton(m_Joystick, Button.turretleft)         .whenHeld(new SpinForward(m_Tower));
     new JoystickButton(m_Joystick, Button.turretRight)        .whenHeld(new SpinReverse(m_Tower));
     new JoystickButton(m_XboxController, Button.emergency_shoot)   .whenHeld(new Emergency_Shoot(m_Emergency_Shooter));
+    // new JoystickButton(m_XboxController, 6)                   .whenH
+    new JoystickButton(m_XboxController, 6)       .whenHeld(new RunCommand(()->m_Tower.aim(), m_Tower))//.withInterrupt(this::getAimButton))
+    .whenReleased(new InstantCommand(()->m_Tower.stop(), m_Tower));
   }
   public void rackInit(){
     m_Rack.initial();

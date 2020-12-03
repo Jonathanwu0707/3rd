@@ -16,6 +16,16 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+    public static class Vision{
+        public static final String limelightName = "limelight-unicorn";
+        public static final double targetHigh = 206;
+        public static final double limelightHigh = 58;
+        public static final double limelightAngle = 36;
+        public static final double lime_kp = 0.15;
+        public static final double lime_ki = 0.0;
+        public static final double lime_kd = 0.0;
+    }
     
     public static class PowCon{
         

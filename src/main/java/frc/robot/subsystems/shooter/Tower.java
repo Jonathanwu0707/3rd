@@ -10,6 +10,7 @@ package frc.robot.subsystems.shooter;
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import frc.robot.motor_method.*;
+import frc.robot.subsystems.Limelight;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.PowCon;
@@ -22,7 +23,7 @@ public class Tower extends Spinable {
    */ 
   private SupplyCurrentLimitConfiguration supplyCurrentLimitConfiguration = new SupplyCurrentLimitConfiguration(true,40, 50, 1);
   private TalonSRX tower = new TalonSRX(PowCon.tower);
-  private DigitalInput dot = new DigitalInput(1);
+  private DigitalInput dot = new DigitalInput(9);
   private static final int forwardL = 5000, reverseL = -5000;
   // private NetworkTableEntry useLimit;
   // private String status = "Stop";
@@ -57,6 +58,7 @@ public class Tower extends Spinable {
 
   @Override
   public void periodic() {
+    // aim();
     if (!dot.get()) {
       tower.setSelectedSensorPosition(0, 0, 10);
     }
@@ -86,6 +88,20 @@ public class Tower extends Spinable {
       tower.set(ControlMode.PercentOutput, -0.21);
     }
 
+  }
+  public void aim(){
+    double error = Limelight.getTx();
+    // SmartDashboard.putNumber("error", error);
+    if(Math.abs(error) < 0.15 || Limelight.getTa() < 0){
+      error = 0;
+    }
+    if(tower.getSelectedSensorPosition() > reverseL && tower.getSelectedSensorPosition() < forwardL){
+      if(error > 10){
+        tower.set(ControlMode.PercentOutput, -0.007 * error);
+      }else{
+        tower.set(ControlMode.PercentOutput, -0.02 * error);
+      }
+    }
   }
 
   @Override
