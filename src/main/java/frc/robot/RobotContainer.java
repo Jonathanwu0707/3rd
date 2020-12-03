@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import javax.annotation.meta.When;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -16,7 +18,6 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.Button;
 import frc.robot.commands.Arm.*;
-import frc.robot.commands.Emergency.*;
 import frc.robot.commands.Rotateable.*;
 import frc.robot.subsystems.chassis.*;
 import frc.robot.subsystems.shooter.*;
@@ -24,7 +25,6 @@ import frc.robot.subsystems.pneumatic.*;
 
 public class RobotContainer {
   private final Shooter               m_Shooter                 = new Shooter();
-  private final Emergency_Shooter     m_Emergency_Shooter       = new Emergency_Shooter();
   private final Conveyor              m_Conveyor                = new Conveyor(m_Shooter);
   private final Intake                m_Intake                  = new Intake();
   private final Joystick              m_Joystick                = new Joystick(0);
@@ -63,13 +63,14 @@ public class RobotContainer {
 
     new JoystickButton(m_XboxController,Button.conveyor)      .whenHeld(new SpinForward(m_Conveyor));
     new JoystickButton(m_XboxController, Button.flySpin)      .whenHeld(new SpinForward(m_Shooter));
+    new JoystickButton(m_XboxController, Button.emergency_shoot).whenHeld(new InstantCommand(()->m_Shooter.percentOutput(0.8)))
+                                                                .whenReleased(new InstantCommand(()->m_Shooter.percentOutput(0.0)));
     new JoystickButton(m_XboxController,Button.arm_out)       .whenHeld(new ArmOut(m_Arm));
     new JoystickButton(m_XboxController,Button.arm_in)        .whenHeld(new ArmIn(m_Arm));
     new JoystickButton(m_Joystick,Button.rack_up)             .whenHeld(new SpinForward(m_Rack));
     new JoystickButton(m_Joystick,Button.rack_down)           .whenHeld(new SpinReverse(m_Rack));
     new JoystickButton(m_Joystick, Button.turretleft)         .whenHeld(new SpinForward(m_Tower));
     new JoystickButton(m_Joystick, Button.turretRight)        .whenHeld(new SpinReverse(m_Tower));
-    new JoystickButton(m_XboxController, Button.emergency_shoot)   .whenHeld(new Emergency_Shoot(m_Emergency_Shooter));
     // new JoystickButton(m_XboxController, 6)                   .whenH
     new JoystickButton(m_XboxController, 6)       .whenHeld(new RunCommand(()->m_Tower.aim(), m_Tower))//.withInterrupt(this::getAimButton))
     .whenReleased(new InstantCommand(()->m_Tower.stop(), m_Tower));
