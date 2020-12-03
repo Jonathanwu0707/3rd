@@ -62,13 +62,18 @@ public class Shooter extends Spinable {
     //InvertType
     flywheelRight.follow(flywheelLeft);
     flywheelLeft.setInverted(false);
-    flywheelRight.setInverted(InvertType.OpposeMaster);    
+    flywheelRight.setInverted(InvertType.OpposeMaster);
+
 
   }
 
   @Override
   public void periodic() {
     SmartDashboard.putNumber("flyvel", flywheelLeft.getSelectedSensorVelocity(0));
+  }
+
+  public void percentOutput(double value){
+
   }
 
   public double getflywheelVelocity(){ 
