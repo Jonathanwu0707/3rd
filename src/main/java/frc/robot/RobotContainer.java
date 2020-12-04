@@ -69,6 +69,9 @@ public class RobotContainer {
     new JoystickButton(m_Joystick,Button.rack_down)           .whenHeld(new SpinReverse(m_Rack));
     new JoystickButton(m_Joystick, Button.turretleft)         .whenHeld(new SpinForward(m_Tower));
     new JoystickButton(m_Joystick, Button.turretRight)        .whenHeld(new SpinReverse(m_Tower));
+    // new JoystickButton(m_XboxController, 6)                   .whenH
+    new JoystickButton(m_XboxController, 6)       .whenHeld(new RunCommand(()->m_Tower.aim(), m_Tower))//.withInterrupt(this::getAimButton))
+    .whenReleased(new InstantCommand(()->m_Tower.stop(), m_Tower));
   }
   public void rackInit(){
     m_Rack.initial();
