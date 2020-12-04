@@ -7,19 +7,19 @@
 
 package frc.robot;
 
+import javax.annotation.meta.When;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.Button;
 import frc.robot.commands.Arm.*;
-import frc.robot.commands.Arm.ArmOut;
-import frc.robot.commands.Rotateable.SpinForward;
-import frc.robot.commands.Rotateable.SpinReverse;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.chassis.ControlDrivetrain;
+import frc.robot.commands.Rotateable.*;
+import frc.robot.subsystems.chassis.*;
 import frc.robot.subsystems.shooter.*;
 import frc.robot.subsystems.pneumatic.*;
 
@@ -28,6 +28,7 @@ public class RobotContainer {
   private final Conveyor              m_Conveyor                = new Conveyor(m_Shooter);
   private final Intake                m_Intake                  = new Intake();
   private final Joystick              m_Joystick                = new Joystick(0);
+  private final XboxController        m_XboxController          = new XboxController(1);
   private final ControlDrivetrain     controlDrivetrain         = new ControlDrivetrain();
   private final Wing                  m_Wing                    = new Wing();
   private final Pneumatics            m_Pneumatics              = new Pneumatics();
@@ -54,7 +55,6 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     joystickMapping();
-    driverStationMapping();
     teleop();
     Pneumatic();
   }
@@ -69,15 +69,14 @@ public class RobotContainer {
     new JoystickButton(m_Joystick,Button.rack_down)           .whenHeld(new SpinReverse(m_Rack));
     new JoystickButton(m_Joystick, Button.turretleft)         .whenHeld(new SpinForward(m_Tower));
     new JoystickButton(m_Joystick, Button.turretRight)        .whenHeld(new SpinReverse(m_Tower));
-
   }
-  private void driverStationMapping() {
-  
+  public void rackInit(){
+    m_Rack.initial();
   }
   
   private void teleop() {
     m_drivetrain.setDefaultCommand(new RunCommand(
-      ()->m_drivetrain.curvatureDrive(m_Joystick.getY(), m_Joystick.getZ(), m_Joystick.getTrigger()), 
+      ()->m_drivetrain.curvatureDrive(m_Joystick.getY() * 0.3, m_Joystick.getZ() * -0.3, m_Joystick.getTrigger()), 
       m_drivetrain));
   }
 

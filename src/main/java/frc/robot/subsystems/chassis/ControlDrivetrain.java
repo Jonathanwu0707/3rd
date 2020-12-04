@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.SlewRateLimiter;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpiutil.math.MathUtil;
 import frc.robot.Constants.*;
-import frc.robot.motor.MotorFactory;
+import frc.robot.motor_method.*;
 import com.kauailabs.navx.frc.AHRS;
 
 public class ControlDrivetrain extends SubsystemBase {
@@ -27,8 +27,8 @@ public class ControlDrivetrain extends SubsystemBase {
   protected static WPI_TalonFX rightFol = new WPI_TalonFX(chassis.rightFollower);
   protected static AHRS ahrs = new AHRS(SPI.Port.kMXP);
   private SupplyCurrentLimitConfiguration supplyCurrentLimitConfiguration = new SupplyCurrentLimitConfiguration(true, 40, 50, 1);
-  private SlewRateLimiter yFilter = new SlewRateLimiter(1.0);
-  private SlewRateLimiter zFilter = new SlewRateLimiter(1.0);
+  private SlewRateLimiter yFilter = new SlewRateLimiter(0.8);
+  private SlewRateLimiter zFilter = new SlewRateLimiter(0.8);
   private double m_quickStopAccumulator = 0, leftout = 0, rightout = 0, lastRotation = 0;
   /**
    * Creates a new ControlDrivetrain.
@@ -60,7 +60,7 @@ public class ControlDrivetrain extends SubsystemBase {
     xSpeed = MathUtil.clamp(xSpeed, -1.0, 1.0);
     zRotation = MathUtil.clamp(zRotation, -1.0, 1.0);
     //簡易死區設定
-    if(xSpeed < 0.05 & xSpeed > -0.05){
+    if((xSpeed < 0.05) & (xSpeed > -0.05)){
       xSpeed = 0;
     }//簡易死區設定
     if(Math.abs(zRotation) < 0.05){

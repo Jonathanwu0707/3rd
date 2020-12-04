@@ -11,11 +11,12 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.PowCon;
-import frc.robot.motor.MotorFactory;
+import frc.robot.motor_method.*;
 import com.ctre.phoenix.motorcontrol.*;
 
 public class Rack extends Spinable {
@@ -23,7 +24,7 @@ public class Rack extends Spinable {
    * Creates a new Rack.
    */
   private SupplyCurrentLimitConfiguration supplyCurrentLimitConfiguration = new SupplyCurrentLimitConfiguration(true, 8, 10, 1);
-  private WPI_TalonSRX rack = new WPI_TalonSRX(PowCon.rack);
+  private TalonSRX rack = new TalonSRX(PowCon.rack);
   private int lastPosition = 0;
 
 
@@ -40,7 +41,7 @@ public class Rack extends Spinable {
     rack.configMotionCruiseVelocity(1500, 10);
 
     rack.configPeakOutputForward(0.2, PowCon.kTimeoutMs);
-    rack.configPeakOutputReverse(0.2, PowCon.kTimeoutMs);
+    rack.configPeakOutputReverse(-0.2, PowCon.kTimeoutMs);
     rack.configSupplyCurrentLimit(supplyCurrentLimitConfiguration);
     
     rack.setNeutralMode(NeutralMode.Coast);

@@ -9,7 +9,7 @@ package frc.robot.subsystems.shooter;
 
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import frc.robot.motor.MotorFactory;
+import frc.robot.motor_method.*;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.PowCon;
@@ -24,8 +24,8 @@ public class Tower extends Spinable {
   private TalonSRX tower = new TalonSRX(PowCon.tower);
   private DigitalInput dot = new DigitalInput(1);
   private static final int forwardL = 5000, reverseL = -5000;
-  private NetworkTableEntry useLimit;
-  private String status = "Stop";
+  // private NetworkTableEntry useLimit;
+  // private String status = "Stop";
 
   
   public Tower() {
@@ -37,6 +37,7 @@ public class Tower extends Spinable {
       // .add("Tower Limit", 1)
       // .withWidget(BuiltInWidgets.kNumberSlider)
       // .getEntry();
+
     
     tower.configSupplyCurrentLimit(supplyCurrentLimitConfiguration);
     tower.setNeutralMode(NeutralMode.Coast);
@@ -46,11 +47,11 @@ public class Tower extends Spinable {
     tower.configOpenloopRamp(0.5);
     }
   public double getPosition(){
-    return tower.getSelectedSensorPosition();
+    return tower.getSelectedSensorPosition(0);
   }
   
   public double getVelocity(){
-    return tower.getSelectedSensorVelocity();
+    return tower.getSelectedSensorVelocity(0);
   }
 
 
