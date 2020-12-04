@@ -73,9 +73,9 @@ public class RobotContainer {
     new JoystickButton(m_XboxController, 6)       .whenHeld(new RunCommand(()->m_Tower.aim(), m_Tower))//.withInterrupt(this::getAimButton))
     .whenReleased(new InstantCommand(()->m_Tower.stop(), m_Tower));
   }
-  public void rackInit(){
-    m_Rack.initial();
-  }
+  // public void rackInit(){
+  //   m_Rack.initial();
+  // }
   
   private void teleop() {
     m_drivetrain.setDefaultCommand(new RunCommand(
